@@ -1,7 +1,7 @@
 import "./Meals.css";
 import Card from "../assets/Card/Card";
 import MealItem from "./MealItems/MealItem";
-
+import { useEffect } from "react";
 const DUMMY_MEALS = [
   {
     id: "m1",
@@ -29,7 +29,16 @@ const DUMMY_MEALS = [
   },
 ];
 
+const getList = async () => {
+  let response = await fetch("http://localhost:8080/untitled/D");
+  const list = await response.json();
+  console.log(list, response);
+};
+
 const Meals = () => {
+  useEffect(() => {
+    getList();
+  }, []);
   const meals = DUMMY_MEALS.map((meal) => {
     return (
       <MealItem
