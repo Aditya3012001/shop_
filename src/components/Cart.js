@@ -15,7 +15,7 @@ const DUMMY_MEALS = [
     price: 16.5,
   },
 ];
-const Cart = () => {
+const Cart = (props) => {
   const cartitems = (
     <ul className="cart-items">
       {DUMMY_MEALS.map((meals) => {
@@ -32,7 +32,9 @@ const Cart = () => {
         <span>40</span>
       </div>
       <div className="actions">
-        <button className="button-alt">Close</button>
+        <button className="button-alt" onClick={props.onHide}>
+          Close
+        </button>
         <button className="button">Orderr</button>
       </div>
     </Modal>
